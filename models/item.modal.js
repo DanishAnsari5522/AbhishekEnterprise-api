@@ -9,6 +9,10 @@ const item = new mongoose.Schema({
         type: String,
         require: true,
     },
+    HSNCode: {
+        type: String,
+        require: true,
+    },
 })
 
 module.exports = mongoose.model("item", item)

@@ -7,11 +7,11 @@ const mongoose = require('mongoose');
 
 const addItem = async (req, res) => {
     try {
-        let { name, gst } = req.body;
-        if (!name || !gst) {
-            return res.status(400).json({ success: false, message: " Item name, gst are required" })
+        let { name, gst,HSNCode } = req.body;
+        if (!name || !gst ||!HSNCode) {
+            return res.status(400).json({ success: false, message: " Item name, gst ,HSNCode are required" })
         }
-        const data = await item.create({ name, gst })
+        const data = await item.create({ name, gst,HSNCode })
         return res.status(200).json({ success: true, message: data })
 
     } catch (error) {
