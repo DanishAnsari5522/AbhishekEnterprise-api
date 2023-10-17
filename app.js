@@ -10,8 +10,9 @@ const server = http.createServer(app)
 // const orders = require("./routes/order.routes")
 const auth = require("./routes/auth.route")
 const user = require("./routes/user.route")
-const product=require('./routes/product.route')
-const item=require('./routes/item.route')
+const product = require('./routes/product.route')
+const item = require('./routes/item.route')
+const supplier = require('./routes/supplier.route')
 
 const PORT = process.env.PORT || 5000
 const authlogin = require("./middleware/auth.middleware")
@@ -24,6 +25,8 @@ app.use("/v1/auth", auth)
 app.use("/v1/user", authlogin, user)
 app.use("/v1/product", authlogin, product)
 app.use("/v1/item", item)
+app.use("/v1/supplier", supplier)
+
 
 
 
