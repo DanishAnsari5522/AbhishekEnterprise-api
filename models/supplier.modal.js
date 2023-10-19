@@ -1,31 +1,59 @@
 const mongoose = require('mongoose');
 
 const supplier = new mongoose.Schema({
-    name: {
+    firmName: {
+        type: String,
+        require: true
+    },
+    partyName: {
+        type: String,
+        require: true,
+    },
+    gst: {
+        type: String,
+        required: true,
+    },
+    email: {
         type: String,
         require: true
     },
     mobile: {
-        type: Number,
-        require: true,
-    },
-    address: {
         type: String,
-        required: true,
+        require: true
+    },
+    whatsapp: {
+        type: String,
+        require: true
+    },
+    other: {
+        type: String,
+        require: true
+    },
+    location: {
+        type: String,
+        require: true
+    },
+    city: {
+        type: String,
+        require: true
     },
     state: {
         type: String,
-        require: true
+        require: true,
     },
-    gstin: {
-        type: String,
-        require: true
+    pin: {
+        type: Number,
+        required: true,
     },
     accountNo: {
         type: Number,
         require: true
     },
-    bank: {
+    branchName: {
+        type: String,
+        require: true
+    },
+    branchAddress: {
         type: String,
         require: true
     },
@@ -33,6 +61,11 @@ const supplier = new mongoose.Schema({
         type: String,
         require: true
     },
+    bankOther: {
+        type: String,
+        require: true
+    },
+
 })
 
 module.exports = mongoose.model("supplier", supplier)

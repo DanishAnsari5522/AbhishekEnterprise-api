@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 
 const addSupplier = async (req, res) => {
     try {
-        let { name, mobile, address, state, gstin, accountNo, bank, ifsc } = req.body;
-        if (!name || !mobile || !address || !state || !gstin || !accountNo || !bank || !ifsc) {
-            return res.status(400).json({ success: false, message: "name, mobile, address, state, gstin, accountNo, bank, ifsc are required" })
+        let { firmName, partyName, gst, email, mobile, whatsapp, other, location, city, state, pin, accountNo, branchName, branchAddress, ifsc, bankOther } = req.body;
+        if (!firmName || !partyName || !gst || !email || !mobile || !whatsapp || !other || !location || !city || !state || !pin || !accountNo || !branchName || !branchAddress || !ifsc || !bankOther) {
+            return res.status(400).json({ success: false, message: "firmName, partyName, gst, email, mobile, whatsapp, other, location, city, state, pin, accountNo, branchName, branchAddress, ifsc, bankOther  are required" })
         }
-        const data = await supplier.create({ name, mobile, address, state, gstin, accountNo, bank, ifsc })
+        const data = await supplier.create({ firmName, partyName, gst, email, mobile, whatsapp, other, location, city, state, pin, accountNo, branchName, branchAddress, ifsc, bankOther })
         return res.status(200).json({ success: true, message: data })
 
     } catch (error) {
@@ -36,7 +36,7 @@ const getSupplierById = async (req, res) => {
         }
         if (mongoose.Types.ObjectId.isValid(_id)) {
             _id = mongoose.Types.ObjectId(_id)
-            const data = await supplier.findOne({ _id }).select('_id name mobile address state gstin accountNo bank ifsc')
+            const data = await supplier.findOne({ _id }).select('_id firmName partyName gst email mobile whatsapp other location city state pin accountNo branchName branchAddress ifsc bankOther ')
             if (!data) {
                 return res.status(400).json({ success: false, message: "Incorrect id" })
             }
