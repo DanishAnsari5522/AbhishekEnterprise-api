@@ -20,6 +20,10 @@ const material = new mongoose.Schema({
     unit: {
         type: String,
         require: true,
+    },
+    rate: {
+        type: String,
+        require: true,
     }
 })
 

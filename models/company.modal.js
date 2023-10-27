@@ -5,6 +5,10 @@ const company = new mongoose.Schema({
         type: String,
         require: true
     },
+    gst: {
+        type: String,
+        require: true
+    },
     companyName: {
         type: String,
         require: true
