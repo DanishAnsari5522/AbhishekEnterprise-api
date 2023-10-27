@@ -7,11 +7,11 @@ const mongoose = require('mongoose');
 
 const addItem = async (req, res) => {
     try {
-        let { name, gst,HSNCode } = req.body;
-        if (!name || !gst ||!HSNCode) {
-            return res.status(400).json({ success: false, message: " Item name, gst ,HSNCode are required" })
+        let { name, gst, HSNCode, uom } = req.body;
+        if (!name || !gst || !HSNCode || !uom) {
+            return res.status(400).json({ success: false, message: " Item name, gst ,HSNCode,uom are required" })
         }
-        const data = await item.create({ name, gst,HSNCode })
+        const data = await item.create({ name, gst, HSNCode,uom })
         return res.status(200).json({ success: true, message: data })
 
     } catch (error) {
@@ -38,7 +38,7 @@ const getItemById = async (req, res) => {
         }
         if (mongoose.Types.ObjectId.isValid(_id)) {
             _id = mongoose.Types.ObjectId(_id)
-            const data = await item.findOne({ _id }).select('_id name gst')
+            const data = await item.findOne({ _id }).select('_id name gst HSNCode uom')
             if (!data) {
                 return res.status(400).json({ success: false, message: "Incorrect id" })
             }

@@ -13,6 +13,10 @@ const item = new mongoose.Schema({
         type: String,
         require: true,
     },
+    uom: {
+        type: String,
+        require: true,
+    },
 })
 
 module.exports = mongoose.model("item", item)
