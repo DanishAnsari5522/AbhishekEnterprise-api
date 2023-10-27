@@ -172,7 +172,7 @@ const addMaterial = async (req, res) => {
         if (!name || !company || !size || !materialType || !unit || !rate) {
             return res.status(400).json({ success: false, message: " name, company, size, materialType, unit,rate  are required" })
         }
-        const data = await material.create({ name, company, size, materialType, unit })
+        const data = await material.create({ name, company, size, materialType, unit, rate })
         return res.status(200).json({ success: true, message: data })
 
     } catch (error) {
