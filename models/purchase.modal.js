@@ -25,6 +25,14 @@ const purchase = new mongoose.Schema({
         type: String,
         require: true
     },
+    gstInvoiceNo: {
+        type: String,
+        require: true
+    },
+    gstInvoiceDate: {
+        type: String,
+        require: true
+    },
     product: {
         type: String,
         require: true

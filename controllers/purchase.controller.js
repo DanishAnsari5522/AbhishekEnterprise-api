@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 
 const addPurchase = async (req, res) => {
     try {
-        let { date, gstType, invoiceNo, supplierName, address, recieverName, product, company, size, materialType, hsnCode, uom, rate, qty } = req.body;
-        if (!date || !gstType || !invoiceNo || !supplierName || !address || !recieverName || !product || !company || !size || !materialType || !hsnCode || !uom || !rate || !qty) {
-            return res.status(400).json({ success: false, message: "date, gstType, invoiceNo, supplierName, address, recieverName, product, company, size, materialType, hsnCode, uom, rate, qty  are required" })
+        let { date, gstType, invoiceNo, supplierName, address, recieverName, gstInvoiceNo, gstInvoiceDate, product, company, size, materialType, hsnCode, uom, rate, qty } = req.body;
+        if (!date || !gstType || !invoiceNo || !supplierName || !address || !recieverName || !gstInvoiceNo || !gstInvoiceDate || !product || !company || !size || !materialType || !hsnCode || !uom || !rate || !qty) {
+            return res.status(400).json({ success: false, message: "date, gstType, invoiceNo, supplierName, address, recieverName, gstInvoiceNo, gstInvoiceDate, product, company, size, materialType, hsnCode, uom, rate, qty  are required" })
         }
-        const data = await purchase.create({ date, gstType, invoiceNo, supplierName, address, recieverName, product, company, size, materialType, hsnCode, uom, rate, qty })
+        const data = await purchase.create({ date, gstType, invoiceNo, supplierName, address, recieverName, gstInvoiceNo, gstInvoiceDate, product, company, size, materialType, hsnCode, uom, rate, qty })
         return res.status(200).json({ success: true, message: data })
 
     } catch (error) {
@@ -36,7 +36,7 @@ const getPurchaseById = async (req, res) => {
         }
         if (mongoose.Types.ObjectId.isValid(_id)) {
             _id = mongoose.Types.ObjectId(_id)
-            const data = await purchase.findOne({ _id }).select('_id date gstType invoiceNo supplierName address recieverName product company size materialType hsnCode uom rate qty')
+            const data = await purchase.findOne({ _id }).select('_id date gstType invoiceNo supplierName address recieverName  gstInvoiceNo gstInvoiceDate product company size materialType hsnCode uom rate qty')
             if (!data) {
                 return res.status(400).json({ success: false, message: "Incorrect id" })
             }
