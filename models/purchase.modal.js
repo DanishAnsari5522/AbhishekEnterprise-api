@@ -65,6 +65,14 @@ const purchase = new mongoose.Schema({
         type: String,
         require: true
     },
+    approvedByAdmin: {
+        type: Boolean,
+        default: false
+    },
+    payment: {
+        type: Boolean,
+        default: false
+    }
 
 })
 
