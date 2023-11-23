@@ -44,8 +44,11 @@ const purchase = new mongoose.Schema({
     payment: {
         type: Boolean,
         default: false
+    },
+    paymentStatus:{
+        type: Boolean,
+        default: false
     }
-
 })
 
 module.exports = mongoose.model("purchase", purchase)
