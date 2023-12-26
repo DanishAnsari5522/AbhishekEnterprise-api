@@ -11,8 +11,16 @@ const addItem = async (req, res) => {
         if (!name || !gst || !HSNCode || !uom) {
             return res.status(400).json({ success: false, message: " Item name, gst ,HSNCode,uom are required" })
         }
-        const data = await item.create({ name, gst, HSNCode, uom })
-        return res.status(200).json({ success: true, message: data })
+        if (HSNCode) {
+            const varify = await item.findOne({ HSNCode })
+            if (varify) {
+                return res.status(401).json({ success: false, message: "Item already exists" })
+            } else {
+                // create
+                const data = await item.create({ name, gst, HSNCode, uom })
+                return res.status(200).json({ success: true, message: data })
+            }
+        }
 
     } catch (error) {
         console.log(error);
