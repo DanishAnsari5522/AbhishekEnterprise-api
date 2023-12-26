@@ -12,6 +12,7 @@ const item = new mongoose.Schema({
     HSNCode: {
         type: String,
         require: true,
+        unique: true
     },
     uom: {
         type: String,
