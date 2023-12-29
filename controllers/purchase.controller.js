@@ -36,7 +36,7 @@ const getPurchaseById = async (req, res) => {
         }
         if (mongoose.Types.ObjectId.isValid(_id)) {
             _id = mongoose.Types.ObjectId(_id)
-            const data = await purchase.findOne({ _id }).select('_id  invoiceNo date gstType supplierName address recieverName gstInvoiceNo gstInvoiceDate item')
+            const data = await purchase.findOne({ _id }).select('_id  invoiceNo date gstType supplierName address recieverName gstInvoiceNo gstInvoiceDate item discount')
             if (!data) {
                 return res.status(400).json({ success: false, message: "Incorrect id" })
             }
