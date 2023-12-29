@@ -1,19 +1,23 @@
 const mongoose = require('mongoose');
 
-const purchase = new mongoose.Schema({
-    invoiceNo: {
-        type: String,
-        required: true,
-    },
-    date: {
+const paymentVoucher = new mongoose.Schema({
+    voucherNo: {
         type: String,
         require: true
     },
-    gstType: {
+    date: {
         type: String,
         require: true,
     },
-    supplierName: {
+    voucherType: {
+        type: String,
+        required: true,
+    },
+    payeseName: {
+        type: String,
+        require: true
+    },
+    payTo: {
         type: String,
         require: true
     },
@@ -21,37 +25,13 @@ const purchase = new mongoose.Schema({
         type: String,
         require: true
     },
-    recieverName: {
+    state: {
         type: String,
-        require: true
+        return: true
     },
-    gstInvoiceNo: {
+    accountNo: {
         type: String,
-        default: 'NA'
-    },
-    gstInvoiceDate: {
-        type: String,
-        default: 'NA'
-    },
-    item: {
-        type: Array,
-        default: []
-    },
-    approvedByAdmin: {
-        type: Boolean,
-        default: false
-    },
-    payment: {
-        type: Boolean,
-        default: false
-    },
-    paymentStatus: {
-        type: Boolean,
-        default: false
-    },
-    discount: {
-        type: Number,
-        default: 0
+        return: true
     },
     accountType: {
         type: String,
@@ -75,4 +55,4 @@ const purchase = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("purchase", purchase)
+module.exports = mongoose.model("paymentVoucher", paymentVoucher)

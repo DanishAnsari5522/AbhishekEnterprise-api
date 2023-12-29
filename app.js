@@ -14,6 +14,7 @@ const product = require('./routes/product.route')
 const item = require('./routes/item.route')
 const supplier = require('./routes/supplier.route')
 const purchase = require('./routes/purchase.route')
+const paymentVoucher=require('./routes/paymentVoucher.route')
 
 const PORT = process.env.PORT || 5000
 const authlogin = require("./middleware/auth.middleware")
@@ -28,6 +29,8 @@ app.use("/v1/product", authlogin, product)
 app.use("/v1/item", item)
 app.use("/v1/supplier", supplier)
 app.use("/v1/purchase", purchase)
+app.use("/v1/paymentVoucher", paymentVoucher)
+
 
 
 
